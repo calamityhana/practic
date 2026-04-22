@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Скриншоты (не нужны в репо)
+screenshots/
+make_screenshots.py
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
