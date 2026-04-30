@@ -20,7 +20,12 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
 .editorial-shadow{box-shadow:0 40px 100px -20px rgba(29,27,25,0.06)}
 .bg-pattern{background-color:#fef8f3}.bg-pattern::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url(https://lh3.googleusercontent.com/aida/ADBb0uhgQz6_PqdGw5dAoWwiLy7mORsZd7_TBBk_X5rnqB0xE0PkcflJqsVM6DlOqVABLMaJbU8WUFZIyLGFC4JjceXNtK4DpDAsW_cIQt9RVcw3M5MJB_YZWDIGx6251r-9VgCaCKlRZzQvjWZ2hTYuEn6t_8MF0XYSaQ-vkWw5EIHrEs3ks1K9pvkxpRk5jOQksWvf72ZKOWyf6ni7rpx1IPGm7cL8uW0RuWX0GyoVuwgh8FQYC39sskTVq4Q);background-repeat:repeat;background-size:400px;opacity:0.2;pointer-events:none;z-index:-1}
 .carousel-track::-webkit-scrollbar{display:none}
-.carousel-track{-ms-overflow-style:none;scrollbar-width:none}
+.carousel-track{-ms-overflow-style:none;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.car-wrapper::after{content:'';position:absolute;right:0;top:0;width:100px;height:calc(100% - 8px);background:linear-gradient(to right,transparent,#fef8f3 90%);pointer-events:none;z-index:5}
+.car-btn{position:absolute;top:calc(50% - 36px);width:44px;height:44px;background:rgba(254,248,243,0.95);border:1px solid #ddc0b9;border-radius:9999px;box-shadow:0 4px 16px rgba(29,27,25,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;z-index:10}
+.car-btn:hover{background:#9b3f25;color:#fff;border-color:#9b3f25}
+.car-btn-left{left:-22px}
+.car-btn-right{right:-22px}
 </style>
 </head>
 <body class="bg-background text-on-surface font-body overflow-x-hidden bg-pattern">
@@ -119,9 +124,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 1 200 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car1">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="iPhone 14 Pro замена экрана" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -135,7 +140,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Samsung Galaxy S23 замена АКБ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -149,7 +154,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Xiaomi 13 Pro ремонт после воды" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -164,10 +169,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car1').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car1').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car1').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car1').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
@@ -193,9 +198,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 2 500 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car2">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="MacBook Pro 14 M2 чистка охлаждения" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -209,7 +214,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="ASUS ROG Zephyrus замена матрицы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -223,7 +228,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Lenovo ThinkPad X1 ремонт после воды" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -238,10 +243,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car2').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car2').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car2').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car2').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
@@ -266,9 +271,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 3 000 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car3">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="JBL Charge 5 замена АКБ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -282,7 +287,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Marshall Stanmore II замена динамика" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -296,7 +301,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Harman Kardon Onyx ремонт усилителя" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -311,10 +316,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car3').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car3').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car3').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car3').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
@@ -339,9 +344,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 1 500 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car4">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Плата управления станком компонентный ремонт" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -355,7 +360,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Частотный преобразователь ремонт платы питания" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -369,7 +374,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Контроллер ЧПУ ремонт" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -384,10 +389,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car4').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car4').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car4').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car4').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
@@ -412,9 +417,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 2 000 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car5">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Сухожар GiGi ремонт" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -428,7 +433,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Стоматологическая установка ремонт платы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -442,7 +447,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Косметологическая кушетка ремонт привода" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -457,10 +462,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car5').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car5').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car5').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car5').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
@@ -485,9 +490,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 1 500 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car6">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Kaffit A5 ТО кофемашины" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -501,7 +506,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Dyson V11 замена АКБ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -515,7 +520,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Bosch MultiCooker ремонт платы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -530,10 +535,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car6').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car6').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car6').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car6').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
@@ -558,9 +563,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 2 000 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car7">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Sony PlayStation 5 замена HDMI" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -574,7 +579,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Xbox Series X чистка охлаждения" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -588,7 +593,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Nintendo Switch замена АКБ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -603,10 +608,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car7').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car7').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car7').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car7').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
@@ -631,9 +636,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 2 500 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car8">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Canon EOS R6 ремонт затвора" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -647,7 +652,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="DJI Mavic 3 ремонт после падения" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -661,7 +666,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="GoPro Hero 11 замена стекла" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -676,10 +681,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car8').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car8').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car8').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car8').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
@@ -705,9 +710,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
     <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 1 500 ₽</span>
   </div>
   <!-- Carousel -->
-  <div class="relative group/car">
+  <div class="relative group/car car-wrapper">
     <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car9">
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Электрическая банная печь замена ТЭНа" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -721,7 +726,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Индукционная плита Bosch ремонт платы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -735,7 +740,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
           </div>
         </div>
       </div>
-      <div class="snap-start shrink-0 w-[280px] bg-surface-container-low rounded-xl overflow-hidden">
+      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
         <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Конвектор Electrolux замена нагревательного элемента" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
@@ -750,10 +755,10 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car9').scrollBy({left:-300,behavior:'smooth'})" class="absolute left-0 top-[45%] -translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car9').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
       <span class="material-symbols-outlined">chevron_left</span>
     </button>
-    <button onclick="document.getElementById('car9').scrollBy({left:300,behavior:'smooth'})" class="absolute right-0 top-[45%] translate-x-5 w-10 h-10 bg-surface-container-highest rounded-full shadow-lg items-center justify-center opacity-0 group-hover/car:opacity-100 transition-opacity z-10 hidden md:flex hover:bg-primary hover:text-on-primary">
+    <button onclick="document.getElementById('car9').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
       <span class="material-symbols-outlined">chevron_right</span>
     </button>
   </div>
