@@ -19,13 +19,12 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
 .circuit-dot{background-image:radial-gradient(circle,#9b3f25 0.5px,transparent 0.5px);background-size:24px 24px;opacity:0.04}
 .editorial-shadow{box-shadow:0 40px 100px -20px rgba(29,27,25,0.06)}
 .bg-pattern{background-color:#fef8f3}.bg-pattern::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:url(https://lh3.googleusercontent.com/aida/ADBb0uhgQz6_PqdGw5dAoWwiLy7mORsZd7_TBBk_X5rnqB0xE0PkcflJqsVM6DlOqVABLMaJbU8WUFZIyLGFC4JjceXNtK4DpDAsW_cIQt9RVcw3M5MJB_YZWDIGx6251r-9VgCaCKlRZzQvjWZ2hTYuEn6t_8MF0XYSaQ-vkWw5EIHrEs3ks1K9pvkxpRk5jOQksWvf72ZKOWyf6ni7rpx1IPGm7cL8uW0RuWX0GyoVuwgh8FQYC39sskTVq4Q);background-repeat:repeat;background-size:400px;opacity:0.2;pointer-events:none;z-index:-1}
-.carousel-track::-webkit-scrollbar{display:none}
-.carousel-track{-ms-overflow-style:none;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.car-wrapper::after{content:'';position:absolute;right:0;top:0;width:100px;height:calc(100% - 8px);background:linear-gradient(to right,transparent,#fef8f3 90%);pointer-events:none;z-index:5}
-.car-btn{position:absolute;top:calc(50% - 36px);width:44px;height:44px;background:rgba(254,248,243,0.95);border:1px solid #ddc0b9;border-radius:9999px;box-shadow:0 4px 16px rgba(29,27,25,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;z-index:10}
-.car-btn:hover{background:#9b3f25;color:#fff;border-color:#9b3f25}
-.car-btn-left{left:-22px}
-.car-btn-right{right:-22px}
+.sl-btn{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;background:rgba(254,248,243,0.92);border-radius:9999px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;z-index:10;border:none;box-shadow:0 2px 8px rgba(29,27,25,0.18)}
+.sl-btn:hover{background:#9b3f25;color:#fff}
+.sl-l{left:8px}.sl-r{right:8px}
+.sl-dot{width:6px;height:6px;border-radius:9999px;background:rgba(255,255,255,0.45);transition:all .25s;display:inline-block}
+.sl-dot.active{background:rgba(255,255,255,0.95);width:16px}
+.sl-tag{display:inline-block;padding:2px 9px;background:rgba(155,63,37,0.1);color:#9b3f25;border-radius:9999px;font-size:0.72rem;font-weight:500}
 </style>
 </head>
 <body class="bg-background text-on-surface font-body overflow-x-hidden bg-pattern">
@@ -82,7 +81,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
 <div class="circuit-dot absolute inset-0 pointer-events-none"></div>
 
 <!-- Hero -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10 mb-20">
+<section class="max-w-screen-2xl mx-auto px-6 md:px-12 relative z-10 mb-14">
   <div class="flex flex-col md:flex-row gap-12 items-center">
     <div class="md:w-3/5">
       <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl text-on-surface leading-[1.1] mb-8">
@@ -104,663 +103,309 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
   </div>
 </section>
 
-<!-- Service Section 1: Смартфоны и планшеты -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">smartphone</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Смартфоны и планшеты</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Замена дисплеев, аккумуляторов, разъёмов. Компонентный ремонт плат. Восстановление после воды. Apple, Samsung, Xiaomi, Huawei и др.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена экрана</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена АКБ</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Ремонт платы</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">После воды</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена разъёма</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 1 200 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car1">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="iPhone 14 Pro замена экрана" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена экрана</p>
-          <h4 class="font-headline font-bold text-base mb-1">iPhone 14 Pro</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Замена OLED-дисплея с сохранением True Tone</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">14 500 ₽</span>
-            <span class="text-on-surface-variant">45 минут</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Samsung Galaxy S23 замена АКБ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена АКБ</p>
-          <h4 class="font-headline font-bold text-base mb-1">Samsung Galaxy S23</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Аккумулятор держал 2 часа — замена на оригинальный</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">2 800 ₽</span>
-            <span class="text-on-surface-variant">1 день</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Xiaomi 13 Pro ремонт после воды" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт после воды</p>
-          <h4 class="font-headline font-bold text-base mb-1">Xiaomi 13 Pro</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Полный сервис после залития, восстановление платы</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">4 500 ₽</span>
-            <span class="text-on-surface-variant">3 дня</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button onclick="document.getElementById('car1').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car1').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
-</section>
+<!-- Services Grid 3×3 -->
+<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-16 relative z-10">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-<!-- Service Section 2: Ноутбуки и ПК -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">laptop_mac</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Ноутбуки и ПК</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Чистка системы охлаждения, замена матриц, апгрейд SSD/RAM. Восстановление после залития. Ремонт плат. Apple, ASUS, Lenovo, HP, Dell и др.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена матрицы</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Чистка охлаждения</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Апгрейд SSD/RAM</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Ремонт платы</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">После залития</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 2 500 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car2">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="MacBook Pro 14 M2 чистка охлаждения" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    <!-- 1. Смартфоны и планшеты -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl1">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт смартфонов"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт смартфонов"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт смартфонов"/>
         </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Чистка охлаждения</p>
-          <h4 class="font-headline font-bold text-base mb-1">MacBook Pro 14" M2</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Замена термопасты, чистка от пыли, снижение температуры</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">3 500 ₽</span>
-            <span class="text-on-surface-variant">1 день</span>
+        <button onclick="slidePrev('sl1')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl1')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl1" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl1" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl1" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">smartphone</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Смартфоны и планшеты</h3>
           </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 1 200 ₽</span>
         </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="ASUS ROG Zephyrus замена матрицы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена матрицы</p>
-          <h4 class="font-headline font-bold text-base mb-1">ASUS ROG Zephyrus</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Разбитая матрица — замена на 144 Гц оригинал</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">6 800 ₽</span>
-            <span class="text-on-surface-variant">2 дня</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Lenovo ThinkPad X1 ремонт после воды" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт после воды</p>
-          <h4 class="font-headline font-bold text-base mb-1">Lenovo ThinkPad X1</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Залит кофе — сушка, ультразвук, восстановление</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">5 200 ₽</span>
-            <span class="text-on-surface-variant">4 дня</span>
-          </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">Замена дисплеев, аккумуляторов, разъёмов. Компонентный ремонт плат. Apple, Samsung, Xiaomi и др.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Замена экрана</span>
+          <span class="sl-tag">Замена АКБ</span>
+          <span class="sl-tag">После воды</span>
+          <span class="sl-tag">Ремонт платы</span>
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car2').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car2').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
-</section>
 
-<!-- Service Section 3: Премиальная аудиотехника -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">headphones</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Премиальная аудиотехника</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Ремонт колонок, наушников, усилителей, профессионального оборудования. Marshall, JBL, Harman Kardon, Bose, Pioneer и др.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена динамиков</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена АКБ</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Ремонт усилителя</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Перепайка разъёмов</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 3 000 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car3">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="JBL Charge 5 замена АКБ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    <!-- 2. Ноутбуки и ПК -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl2">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт ноутбуков"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт ноутбуков"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт ноутбуков"/>
         </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена АКБ</p>
-          <h4 class="font-headline font-bold text-base mb-1">JBL Charge 5</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Колонка не держала заряд — замена аккумулятора</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">2 300 ₽</span>
-            <span class="text-on-surface-variant">1 день</span>
+        <button onclick="slidePrev('sl2')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl2')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl2" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl2" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl2" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">laptop_mac</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Ноутбуки и ПК</h3>
           </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 2 500 ₽</span>
         </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Marshall Stanmore II замена динамика" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена динамика</p>
-          <h4 class="font-headline font-bold text-base mb-1">Marshall Stanmore II</h4>
-          <p class="text-sm text-on-surface-variant mb-3">НЧ-динамик хрипел — замена и ремонт усилителя</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">5 500 ₽</span>
-            <span class="text-on-surface-variant">4 дня</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Harman Kardon Onyx ремонт усилителя" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт усилителя</p>
-          <h4 class="font-headline font-bold text-base mb-1">Harman Kardon Onyx</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Нет звука — восстановление усилительного блока</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">7 000 ₽</span>
-            <span class="text-on-surface-variant">5 дней</span>
-          </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">Чистка охлаждения, замена матриц, апгрейд SSD/RAM. Apple, ASUS, Lenovo, HP, Dell и др.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Замена матрицы</span>
+          <span class="sl-tag">Чистка охлаждения</span>
+          <span class="sl-tag">Апгрейд SSD</span>
+          <span class="sl-tag">После залития</span>
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car3').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car3').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
-</section>
 
-<!-- Service Section 4: Промышленная электроника -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">developer_board</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Промышленная электроника</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Компонентный ремонт плат питания, плат управления, панелей коммутации. Любые производители промышленного оборудования.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Платы питания</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Платы управления</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Компонентный ремонт</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Восстановление дорожек</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 1 500 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car4">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Плата управления станком компонентный ремонт" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    <!-- 3. Аудиотехника -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт аудиотехники"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт аудиотехники"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт аудиотехники"/>
         </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Компонентный ремонт</p>
-          <h4 class="font-headline font-bold text-base mb-1">Плата управления станком</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Замена 6 транзисторов, восстановление дорожек</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">12 000 ₽</span>
-            <span class="text-on-surface-variant">5 дней</span>
+        <button onclick="slidePrev('sl3')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl3')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl3" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl3" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl3" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">headphones</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Аудиотехника</h3>
           </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 3 000 ₽</span>
         </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Частотный преобразователь ремонт платы питания" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт платы питания</p>
-          <h4 class="font-headline font-bold text-base mb-1">Частотный преобразователь</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Замена IGBT-модулей, восстановление цепей</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">18 000 ₽</span>
-            <span class="text-on-surface-variant">7 дней</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Контроллер ЧПУ ремонт" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт контроллера</p>
-          <h4 class="font-headline font-bold text-base mb-1">Контроллер ЧПУ</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Восстановление после скачка напряжения</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">9 500 ₽</span>
-            <span class="text-on-surface-variant">4 дня</span>
-          </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">Колонки, наушники, усилители. Marshall, JBL, Harman Kardon, Bose, Pioneer и др.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Замена динамиков</span>
+          <span class="sl-tag">Замена АКБ</span>
+          <span class="sl-tag">Ремонт усилителя</span>
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car4').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car4').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
-</section>
 
-<!-- Service Section 5: Медицинская техника -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">local_hospital</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Медицинская техника</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Сухожары, кушетки с электроприводом, стоматологические установки, косметологическое оборудование.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Сухожары</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Стоматологические установки</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Кушетки с приводом</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Косметологическое оборудование</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 2 000 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car5">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Сухожар GiGi ремонт" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    <!-- 4. Промышленная электроника -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl4">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Промышленная электроника"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Промышленная электроника"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Промышленная электроника"/>
         </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт сухожара</p>
-          <h4 class="font-headline font-bold text-base mb-1">Сухожар GiGi</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Замена ТЭНа и термостата, калибровка</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">3 200 ₽</span>
-            <span class="text-on-surface-variant">2 дня</span>
+        <button onclick="slidePrev('sl4')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl4')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl4" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl4" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl4" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">developer_board</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Промышленная электроника</h3>
           </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 1 500 ₽</span>
         </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Стоматологическая установка ремонт платы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт установки</p>
-          <h4 class="font-headline font-bold text-base mb-1">Стоматологическая установка</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Ремонт платы управления компрессором</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">15 000 ₽</span>
-            <span class="text-on-surface-variant">6 дней</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Косметологическая кушетка ремонт привода" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт привода</p>
-          <h4 class="font-headline font-bold text-base mb-1">Косметологическая кушетка</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Электропривод стола — замена мотора и платы</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">4 500 ₽</span>
-            <span class="text-on-surface-variant">3 дня</span>
-          </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">Компонентный ремонт плат питания, плат управления, частотных преобразователей, контроллеров ЧПУ.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Платы питания</span>
+          <span class="sl-tag">Платы управления</span>
+          <span class="sl-tag">ЧПУ</span>
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car5').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car5').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
-</section>
 
-<!-- Service Section 6: Бытовая техника -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">blender</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Бытовая техника</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Кофемашины, пылесосы, мультиварки, утюги и другая мелкая бытовая техника. Bosch, Dyson, Philips, Siemens, Electrolux и др.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Кофемашины</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Пылесосы</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Мультиварки</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Парогенераторы</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 1 500 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car6">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Kaffit A5 ТО кофемашины" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    <!-- 5. Медицинская техника -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl5">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Медицинская техника"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Медицинская техника"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Медицинская техника"/>
         </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">ТО кофемашины</p>
-          <h4 class="font-headline font-bold text-base mb-1">Kaffit A5</h4>
-          <p class="text-sm text-on-surface-variant mb-3">ТО заварочного узла, чистка датчиков, устранение ошибки</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">8 000 ₽</span>
-            <span class="text-on-surface-variant">3 дня</span>
+        <button onclick="slidePrev('sl5')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl5')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl5" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl5" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl5" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">local_hospital</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Медицинская техника</h3>
           </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 2 000 ₽</span>
         </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Dyson V11 замена АКБ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена АКБ</p>
-          <h4 class="font-headline font-bold text-base mb-1">Dyson V11</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Пылесос не держал заряд — замена аккумулятора</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">3 500 ₽</span>
-            <span class="text-on-surface-variant">1 день</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Bosch MultiCooker ремонт платы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт платы</p>
-          <h4 class="font-headline font-bold text-base mb-1">Bosch MultiCooker</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Мультиварка не включалась — ремонт платы управления</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">2 800 ₽</span>
-            <span class="text-on-surface-variant">2 дня</span>
-          </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">Сухожары, кушетки с электроприводом, стоматологические установки, косметологическое оборудование.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Сухожары</span>
+          <span class="sl-tag">Стомат. установки</span>
+          <span class="sl-tag">Кушетки</span>
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car6').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car6').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
-</section>
 
-<!-- Service Section 7: Игровые консоли -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">sports_esports</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Игровые консоли</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Замена HDMI-портов, ремонт блоков питания, чистка, замена термопасты, ремонт контроллеров. Sony PlayStation, Xbox, Nintendo Switch.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена HDMI</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Чистка охлаждения</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена термопасты</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Ремонт контроллеров</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 2 000 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car7">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Sony PlayStation 5 замена HDMI" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    <!-- 6. Бытовая техника -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl6">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт бытовой техники"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт бытовой техники"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт бытовой техники"/>
         </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена HDMI</p>
-          <h4 class="font-headline font-bold text-base mb-1">Sony PlayStation 5</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Нет изображения — перепайка HDMI-разъёма под микроскопом</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">3 500 ₽</span>
-            <span class="text-on-surface-variant">2 дня</span>
+        <button onclick="slidePrev('sl6')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl6')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl6" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl6" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl6" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">blender</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Бытовая техника</h3>
           </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 1 500 ₽</span>
         </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Xbox Series X чистка охлаждения" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Чистка охлаждения</p>
-          <h4 class="font-headline font-bold text-base mb-1">Xbox Series X</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Перегрев — чистка и замена термопасты</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">2 500 ₽</span>
-            <span class="text-on-surface-variant">1 день</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Nintendo Switch замена АКБ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена АКБ</p>
-          <h4 class="font-headline font-bold text-base mb-1">Nintendo Switch</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Консоль не держала заряд — замена аккумулятора</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">2 800 ₽</span>
-            <span class="text-on-surface-variant">1 день</span>
-          </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">Кофемашины, пылесосы, мультиварки. Bosch, Dyson, Philips, Siemens, Electrolux и др.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Кофемашины</span>
+          <span class="sl-tag">Пылесосы</span>
+          <span class="sl-tag">Мультиварки</span>
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car7').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car7').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
-</section>
 
-<!-- Service Section 8: Фото- и видеотехника -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">photo_camera</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Фото- и видеотехника</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Ремонт камер, объективов, дронов, экшн-камер. Замена матриц, затворов, шлейфов. Canon, Nikon, Sony, GoPro, DJI и др.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Ремонт затвора</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Замена матрицы</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Ремонт объективов</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Ремонт дронов</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 2 500 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car8">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Canon EOS R6 ремонт затвора" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    <!-- 7. Игровые консоли -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl7">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт игровых консолей"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт игровых консолей"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт игровых консолей"/>
         </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт затвора</p>
-          <h4 class="font-headline font-bold text-base mb-1">Canon EOS R6</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Замена затворного механизма, калибровка</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">8 500 ₽</span>
-            <span class="text-on-surface-variant">5 дней</span>
+        <button onclick="slidePrev('sl7')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl7')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl7" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl7" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl7" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">sports_esports</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Игровые консоли</h3>
           </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 2 000 ₽</span>
         </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="DJI Mavic 3 ремонт после падения" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт дрона</p>
-          <h4 class="font-headline font-bold text-base mb-1">DJI Mavic 3</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Восстановление после падения — плата и моторы</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">12 000 ₽</span>
-            <span class="text-on-surface-variant">7 дней</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="GoPro Hero 11 замена стекла" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена стекла</p>
-          <h4 class="font-headline font-bold text-base mb-1">GoPro Hero 11</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Разбитое стекло объектива — замена</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">2 500 ₽</span>
-            <span class="text-on-surface-variant">2 дня</span>
-          </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">PlayStation, Xbox, Nintendo Switch. Замена HDMI, чистка системы охлаждения, ремонт контроллеров.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Замена HDMI</span>
+          <span class="sl-tag">Чистка охлаждения</span>
+          <span class="sl-tag">Контроллеры</span>
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car8').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car8').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
-</section>
 
-<!-- Service Section 9: Нагревательное оборудование -->
-<section class="max-w-screen-2xl mx-auto px-6 md:px-12 mb-20 relative z-10">
-  <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
-    <div>
-      <div class="flex items-center gap-3 mb-3">
-        <span class="material-symbols-outlined text-primary text-4xl">local_fire_department</span>
-        <h2 class="font-headline text-3xl md:text-4xl font-bold">Нагревательное оборудование</h2>
-      </div>
-      <p class="text-on-surface-variant max-w-2xl mb-4">Электропечи, индукционные плиты, банные печи, обогреватели, тепловые пушки, инфракрасные панели.</p>
-      <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Электропечи</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Индукционные плиты</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Банные печи</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Конвекторы</span>
-        <span class="px-3 py-1.5 bg-primary/10 text-primary text-sm rounded-full font-medium">Тепловые пушки</span>
-      </div>
-    </div>
-    <span class="text-primary font-bold text-xl whitespace-nowrap mt-2">от 1 500 ₽</span>
-  </div>
-  <!-- Carousel -->
-  <div class="relative group/car car-wrapper">
-    <div class="carousel-track flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" id="car9">
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" alt="Электрическая банная печь замена ТЭНа" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+    <!-- 8. Фото- и видеотехника -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl8">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт фото и видеотехники"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт фото и видеотехники"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Ремонт фото и видеотехники"/>
         </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена ТЭНа</p>
-          <h4 class="font-headline font-bold text-base mb-1">Электрическая банная печь</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Печь не грела — замена нагревательного элемента</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">4 500 ₽</span>
-            <span class="text-on-surface-variant">2 дня</span>
+        <button onclick="slidePrev('sl8')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl8')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl8" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl8" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl8" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">photo_camera</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Фото- и видеотехника</h3>
           </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 2 500 ₽</span>
         </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" alt="Индукционная плита Bosch ремонт платы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Ремонт платы</p>
-          <h4 class="font-headline font-bold text-base mb-1">Индукционная плита Bosch</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Не работал один контур — ремонт платы управления</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">3 800 ₽</span>
-            <span class="text-on-surface-variant">3 дня</span>
-          </div>
-        </div>
-      </div>
-      <div class="snap-start shrink-0 w-[82vw] sm:w-[52vw] md:w-[42vw] lg:w-[calc(33vw-16px)] max-w-[420px] bg-surface-container-low rounded-xl overflow-hidden">
-        <div class="aspect-[4/3] bg-surface-container-high overflow-hidden">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" alt="Конвектор Electrolux замена нагревательного элемента" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        </div>
-        <div class="p-5">
-          <p class="text-xs text-primary font-bold uppercase tracking-wider mb-1">Замена элемента</p>
-          <h4 class="font-headline font-bold text-base mb-1">Конвектор Electrolux</h4>
-          <p class="text-sm text-on-surface-variant mb-3">Не нагревался — замена нагревательного элемента</p>
-          <div class="flex gap-4 text-sm">
-            <span class="font-bold text-primary">2 200 ₽</span>
-            <span class="text-on-surface-variant">1 день</span>
-          </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">Ремонт камер, объективов, дронов, экшн-камер. Canon, Nikon, Sony, GoPro, DJI и др.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Ремонт затвора</span>
+          <span class="sl-tag">Замена матрицы</span>
+          <span class="sl-tag">Ремонт дронов</span>
         </div>
       </div>
     </div>
-    <button onclick="document.getElementById('car9').scrollBy({left:-300,behavior:'smooth'})" class="car-btn car-btn-left hidden md:flex">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button onclick="document.getElementById('car9').scrollBy({left:300,behavior:'smooth'})" class="car-btn car-btn-right hidden md:flex">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
+
+    <!-- 9. Нагревательное оборудование -->
+    <div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+      <div class="relative overflow-hidden aspect-[4/3] bg-surface-container-high">
+        <div class="flex h-full transition-transform duration-300 ease-in-out" id="sl9">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjSJ2coI7WPKzKGh7DCXEd1fFepUq6T5_m7ttueEhjqA5OFIfP2fDASP5mP-bSE5JplSUOKzafWXEmOwSzOb3bwdHyD1ltz_cY6tOL5xYGv7QKCE-evq9t1WS7ITHepPj3aQCXw7tubbrzL40EmOAy3CrWLxR2v4Kj569F-fUq6dCW9t_cOwWQfZLyr2Sd4AhASReJdaQGUWyvyuMgFA6pESBgtkeL-ordB52ctDKpR7_P3ouhCuo5tr6oYaCy_O_il_mtsuvSC9S8" class="min-w-full h-full object-cover" loading="lazy" alt="Нагревательное оборудование"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP-1wvquUejkwMh7Jpmdm4nFv9IB1_xEXk0tHAbJaLHxxlSuzDPiNo_x6UkzISaAd4H8S9-_dOFhOBuGoRc8MXQnCsmNokPR9sYebl-9vemTiGaVcxfSzpFZJBFf9-y1DE4qwhj45XNzwZ_WcpqTyL4ya32DisAtL0x8oUtTkFemEveP846t7jdEXsle7NYurHEKaCGFctwot1ZSLQ-2OyjawEbdj5CPnGzcN_2P77rVWJRa8kE8_xz4KlILOSZPHrdRs5CDz8Zf7" class="min-w-full h-full object-cover" loading="lazy" alt="Нагревательное оборудование"/>
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvVGguEfv2IFy-HtWRlLY7uebyTLSCn7CeCFbDTXWj4LZfS2BPiRqobIqgtmGuxC3SsWFz_pEOflGb2fjNiL0TuY8mmx9Gc9TGU33Bi9H38R-JoiJMdbYptYJFLrKYsauL34vlVdqXXrYGjilTVGA-b6DH5F1R2p_rfsKZk-KG7o5CvvuL9Oj_3kuc_yD01uA5bVsFcNN_WVA8BGTWD0P7M8VFqf6mg3kJQHFKU-M2ecuWJbOEgoBLSza_yisVhloELG1ov-VNAq8e" class="min-w-full h-full object-cover" loading="lazy" alt="Нагревательное оборудование"/>
+        </div>
+        <button onclick="slidePrev('sl9')" class="sl-btn sl-l"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <button onclick="slideNext('sl9')" class="sl-btn sl-r"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10">
+          <span class="sl-dot active" data-sl="sl9" data-i="0"></span>
+          <span class="sl-dot" data-sl="sl9" data-i="1"></span>
+          <span class="sl-dot" data-sl="sl9" data-i="2"></span>
+        </div>
+      </div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">local_fire_department</span>
+            <h3 class="font-headline font-bold text-lg leading-tight">Нагревательное оборудование</h3>
+          </div>
+          <span class="text-primary font-bold text-sm whitespace-nowrap mt-1">от 1 500 ₽</span>
+        </div>
+        <p class="text-sm text-on-surface-variant mb-3 leading-relaxed">Электропечи, индукционные плиты, банные печи, обогреватели, тепловые пушки.</p>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="sl-tag">Электропечи</span>
+          <span class="sl-tag">Индукционные плиты</span>
+          <span class="sl-tag">Банные печи</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -814,7 +459,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
 
 </main>
 
-<!-- Footer (same as homepage) -->
+<!-- Footer -->
 <footer class="bg-[#F7EFE9] mt-20">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-10 px-6 md:px-12 py-14 max-w-screen-2xl mx-auto text-sm leading-relaxed">
   <div>
@@ -824,18 +469,18 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
   <div>
     <h4 class="font-bold text-primary mb-5 uppercase tracking-widest text-xs">Услуги</h4>
     <ul class="space-y-3 text-on-surface/60">
-      <li><a href="#" class="hover:text-primary transition-colors">Смартфоны и планшеты</a></li>
-      <li><a href="#" class="hover:text-primary transition-colors">Ноутбуки и ПК</a></li>
-      <li><a href="#" class="hover:text-primary transition-colors">Аудиотехника</a></li>
-      <li><a href="#" class="hover:text-primary transition-colors">Промышленная электроника</a></li>
+      <li><a href="02_uslugi.html" class="hover:text-primary transition-colors">Смартфоны и планшеты</a></li>
+      <li><a href="02_uslugi.html" class="hover:text-primary transition-colors">Ноутбуки и ПК</a></li>
+      <li><a href="02_uslugi.html" class="hover:text-primary transition-colors">Аудиотехника</a></li>
+      <li><a href="02_uslugi.html" class="hover:text-primary transition-colors">Промышленная электроника</a></li>
     </ul>
   </div>
   <div>
     <h4 class="font-bold text-primary mb-5 uppercase tracking-widest text-xs">Навигация</h4>
     <ul class="space-y-3 text-on-surface/60">
-      <li><a href="03_portfolio.html" class="hover:text-primary transition-colors">Портфолио</a></li>
       <li><a href="04_status.html" class="hover:text-primary transition-colors">Статус заказа</a></li>
       <li><a href="05_kontakty.html" class="hover:text-primary transition-colors">Контакты</a></li>
+      <li><a href="06_business.html" class="hover:text-primary transition-colors">Юр. лицам</a></li>
     </ul>
   </div>
   <div>
@@ -850,7 +495,29 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e6e
   <p class="text-on-surface/50 text-sm">© 2025 Мастерская «Practic». Екатеринбург.</p>
 </div>
 </footer>
+
 <script>
+// Mini-slider
+var SL={};
+function slideNext(id){
+  var t=document.getElementById(id);
+  var n=t.children.length;
+  SL[id]=((SL[id]||0)+1)%n;
+  t.style.transform='translateX(-'+(SL[id]*100)+'%)';
+  _updateDots(id);
+}
+function slidePrev(id){
+  var t=document.getElementById(id);
+  var n=t.children.length;
+  SL[id]=((SL[id]||0)-1+n)%n;
+  t.style.transform='translateX(-'+(SL[id]*100)+'%)';
+  _updateDots(id);
+}
+function _updateDots(id){
+  document.querySelectorAll('[data-sl="'+id+'"]').forEach(function(d,i){
+    if(i===SL[id]){d.classList.add('active');}else{d.classList.remove('active');}
+  });
+}
 // Mobile burger menu
 (function(){
   var btn=document.getElementById('mobileMenuBtn');
